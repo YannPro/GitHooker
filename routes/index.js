@@ -16,7 +16,7 @@ router.post('/gitHook', function(req, res, next) {
     let repoName = req.body.repository.name;
     console.log('repoName is ' + repoName);
     console.log('scripts[repoName] is ' + scripts[repoName]);
-    if (scripts[repoName] != undefined){
+    // if (scripts[repoName] != undefined){
       let doRunScripts = scripts["Test-script"];
       console.log('we are going to deploy this ' + doRunScripts);
       let scriptRun = exec(`sh ${doRunScripts}`,
@@ -27,10 +27,10 @@ router.post('/gitHook', function(req, res, next) {
                 console.log(`exec error: ${error}`);
             }
         });
-    }
-    else{
-      console.log('ignore - it is undefined ');
-    }
+    // }
+    // else{
+    //   console.log('ignore - it is undefined ');
+    // }
 
   }
   catch (err){
