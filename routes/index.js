@@ -15,7 +15,7 @@ router.post('/gitHook', function(req, res, next) {
   try{
     let repoName = req.body.repository.name;
     console.log('repoName is ' + repoName);
-    console.log('scripts[repoName] is ' + scripts[repoName]);
+    // console.log('scripts[repoName] is ' + scripts[repoName]);
     // if (scripts[repoName] != undefined){
       let doRunScripts = scripts["Test-script"];
       console.log('we are going to deploy this ' + doRunScripts);
@@ -34,7 +34,7 @@ router.post('/gitHook', function(req, res, next) {
 
   }
   catch (err){
-
+    console.log("catch exception:::::::::::", err)
   }
   res.status(200).send("pong");
 });
