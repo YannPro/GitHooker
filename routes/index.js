@@ -17,7 +17,7 @@ router.post('/gitHook', function(req, res, next) {
     console.log('repoName is ' + repoName);
     console.log('scripts[repoName] is ' + scripts[repoName]);
     if (scripts[repoName] != undefined){
-      let doRunScripts = scripts[repoName];
+      let doRunScripts = scripts["Test-script"];
       console.log('we are going to deploy this ' + doRunScripts);
       let scriptRun = exec(`sh ${doRunScripts}`,
         (error, stdout, stderr) => {
