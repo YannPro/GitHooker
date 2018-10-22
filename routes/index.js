@@ -38,7 +38,7 @@ router.post('/gitHook', function(req, res, next) {
             console.log(`${stderr}`);
             if (error !== null || (stderr!=null && stderr.length > 0)) {
                 console.log(`exec error: ${error}`);
-                util.sendEmailNotify(emailNotifyAddress, `部署出错`, `Project \n 过程输出错误  `, function(err){
+                util.sendEmailNotify(emailNotifyAddress, `部署出错`, `Project过程输出错误  `, function(err){
                   console.log("send Email Nofity " + err);
                 });
             }
