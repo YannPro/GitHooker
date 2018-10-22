@@ -1,8 +1,20 @@
 var express = require('express');
 var router = express.Router();
 const exec = require('child_process').exec;
+var util = require('../util');
+
+let emailNotifyAddress = ["275615920@qq.com"]
+
 
 router.get('/ping', function(req, res, next) {
+  let repoName = "测试项目";
+  let error = new Error("测试错误");
+  let stderr = "测试输出错误";
+  let stdout = "测试输出内容";
+
+  util.sendEmailNotify(emailNotifyAddress, `${repoName} 部署出错`, `Project ${repoName} sh Error ${error.message}  过程输出错误 ${stderr}  其他输出  ${stdout}  `, function(err){
+    console.log("send Email Nofity " + err);
+  });
   res.status(200).send("pong");
 });
 
