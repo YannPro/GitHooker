@@ -19,8 +19,8 @@ router.get('/ping', function(req, res, next) {
 });
 
 let scripts ={
-  "Test":"/var/www/html/deploy-script/Test-deploy",
-  "blog-server":"/var/www/html/deploy-script/blog_server_deploy.sh"
+  "Test":"~/yy_deploy//Test-deploy",
+  "blog-server":"~/yy_deploy/blog_server_deploy.sh"
 }
 
 router.post('/gitHook', function(req, res, next) {
