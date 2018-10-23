@@ -24,11 +24,11 @@ let scripts ={
 }
 
 router.post('/gitHook', function(req, res, next) {
-  console.log(req.body);
-  console.log(typeof req.body)
+  console.log(req.body.payload)
+  let jsonObj = JSON.parse(req.body.payload);
   console.log("hhhh")
   try{
-    let repoName = req.body.repository.name;
+    let repoName = jsonObj.repository.name;
     console.log('repoName is ' + repoName);
     console.log('scripts[repoName] is ' + scripts[repoName]);
     if (scripts[repoName] != undefined){
