@@ -19,18 +19,19 @@ router.get('/ping', function(req, res, next) {
 });
 
 let scripts ={
-  "Test-script":"/var/www/html/deploy-script/Test-deploy",
+  "Test":"/var/www/html/deploy-script/Test-deploy",
+  "blog-server":"/var/www/html/deploy-script/blog_server_deploy.sh"
 }
 
 router.post('/gitHook', function(req, res, next) {
   console.log(req.body);
   console.log("hhhh")
   try{
-    // let repoName = req.body.repository.name;
-    // console.log('repoName is ' + repoName);
-    // console.log('scripts[repoName] is ' + scripts[repoName]);
-    // if (scripts[repoName] != undefined){
-      let doRunScripts = scripts["Test-script"];
+    let repoName = req.body.repository.name;
+    console.log('repoName is ' + repoName);
+    console.log('scripts[repoName] is ' + scripts[repoName]);
+    if (scripts[repoName] != undefined){
+      let doRunScripts = scripts[repoName];
       console.log('we are going to deploy this ' + doRunScripts);
       let scriptRun = exec(`sh ${doRunScripts}`,
         (error, stdout, stderr) => {
@@ -50,10 +51,10 @@ router.post('/gitHook', function(req, res, next) {
               });
             }
         });
-    // }
-    // else{
-    //   console.log('ignore - it is undefined ');
-    // }
+    }
+    else{
+      console.log('ignore - it is undefined ');
+    }
 
   }
   catch (err){
